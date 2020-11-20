@@ -1,7 +1,7 @@
 
 
 public interface Subject {
-    public void attach(Observer observer);
-    public void notifyObservers();
+     void attach(Observer observer);
+     void notifyObservers();
 
 }

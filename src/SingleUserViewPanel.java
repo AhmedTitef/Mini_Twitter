@@ -28,9 +28,7 @@ public class SingleUserViewPanel extends JPanel {
     private Map<String, Observer> allUsers;
     private Map<String, JPanel> openPanels;
 
-    /**
-     * Create the panel.
-     */
+
     public SingleUserViewPanel(Map<String, Observer> allUsers, Map<String, JPanel> allPanels, DefaultMutableTreeNode user) {
         super();
 
@@ -89,10 +87,10 @@ public class SingleUserViewPanel extends JPanel {
         newsFeedScrollPane = new JScrollPane(newsFeedTextArea);
         newsFeedScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        // current following and news feed lists reflect most recent state of UserViewPanel
+
         updateCurrentFollowingTextArea();
 
-        // news feed is updated even while UserViewPanel is closed
+
         updateTwitterMessagesTextArea();
     }
 
@@ -110,7 +108,7 @@ public class SingleUserViewPanel extends JPanel {
         frame.setVisible(true);
         frame.setTitle(((User) user).getId());
 
-        // allows UserViewPanel to be reopened after it has been closed
+
         frame.addWindowListener(new WindowAdapter() {
 
             public void windowClosing(WindowEvent e) {
@@ -176,7 +174,6 @@ public class SingleUserViewPanel extends JPanel {
                     ((Subject) toFollow).attach((Observer) user);
                 }
 
-                // show current following as list
                 updateCurrentFollowingTextArea();
             }
         });

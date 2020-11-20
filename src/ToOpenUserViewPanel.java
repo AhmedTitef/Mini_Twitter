@@ -70,7 +70,7 @@ public class ToOpenUserViewPanel extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // get User selected in TreePanel
+
                 DefaultMutableTreeNode selectedNode = getSelectedNode();
 
 

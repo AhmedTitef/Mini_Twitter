@@ -61,7 +61,7 @@ public class admin_control_panel {
         container.add(component, gbc);
     }
     private void initializeComponents() {
-        frame = new JFrame("Mini-Twitter App");
+        frame = new JFrame("Mini Twitter App");
         formatFrame();
 
         allUsers = new HashMap<String, Observer>();
@@ -73,16 +73,13 @@ public class admin_control_panel {
         openUserViewPanel = new ToOpenUserViewPanel(treePanel, allUsers);
         showInfoPanel = new ShowInfomationPanel(treePanel);
 
-        // set buttons to respond to ENTER key, remove default response to SPACE key
-        UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);
-        InputMap im = (InputMap) UIManager.get("Button.focusInputMap");
-        im.put(KeyStroke.getKeyStroke( KeyEvent.VK_SPACE, 0), "none");
+
     }
 
     private void formatFrame() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
-        frame.setSize(800, 400);
+        frame.setSize(1000, 800);
         frame.setVisible(true);
     }
 

@@ -53,7 +53,10 @@ public class GroupUser extends User {
 
     @Override
     public void accept(Visitor visitor) {
-
+        for (User user : groupUsers.values()) {
+            user.accept(visitor);
+        }
+        visitor.visitGroupUser(this);
     }
 
     public Map<String, User> getGroupUsers() {
@@ -75,9 +78,11 @@ public class GroupUser extends User {
 
 
 
-    public User addUserInGroup(User user){
-
-        return null;
+    public User addUserInGroup(User user) {
+        if (!this.contain(user.getId())) {
+            this.groupUsers.put(user.getId(), user);
+        }
+        return this;
     }
 
 
@@ -97,6 +102,17 @@ public class GroupUser extends User {
 
     @Override
     public void update(Subject subject) {
+        for (User user : groupUsers.values()) {
+            ((Observer) user).update(subject);
+        }
+    }
 
+    @Override
+    public int getMessageCount() {
+        int msgCount = 0;
+        for (User user : this.groupUsers.values()) {
+            msgCount += user.getMessageCount();
+        }
+        return msgCount;
     }
 }

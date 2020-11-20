@@ -10,6 +10,7 @@ public class SingleUser extends User implements Subject {
     private Map<String, Observer> followers;
     private  Map <String , Subject> followings;
     private List<Integer> uniqueID;
+    private int positiveMessageCount;
 
     public List<String> getTwitterMessages() {
         return twitterMessages;
@@ -53,11 +54,15 @@ public class SingleUser extends User implements Subject {
 
 
     }
+    public int getPositiveMessageCount() {
+        return positiveMessageCount;
+    }
 
     private void addUserToFollow(Subject personToFollow){
 
 
-        getFollowing().put(((User) personToFollow).getId(), personToFollow);
+        if (personToFollow.getClass() == SingleUser.class)
+            getFollowing().put(((User) personToFollow).getId(), personToFollow);
 
 
     }

@@ -16,9 +16,11 @@ public abstract class User extends DefaultMutableTreeNode implements Observer {
 
 
     public User(String id) {
-
+        super(id);
 
         this.setMessageCount( 0 );
+
+        this.id = id;
     }
 
 

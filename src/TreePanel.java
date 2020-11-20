@@ -64,6 +64,9 @@ public class TreePanel extends JPanel {
         }
 
 
+        if (parentNode.getUserObject().getClass() == SingleUser.class) {
+            parentNode = (DefaultMutableTreeNode) parentNode.getParent();
+        }
 
         addUser(parentNode, child );
     }
@@ -80,10 +83,10 @@ public class TreePanel extends JPanel {
 
         tree.scrollPathToVisible(new TreePath(childNode.getPath()));
 
-//        if (parent.getClass() != GroupUser.class) {
-//            parent = (DefaultMutableTreeNode) parent.getUserObject();
-//        }
-//        ((GroupUser) parent).addUserInGroup((User) child);
+        if (parent.getClass() != GroupUser.class) {
+            parent = (DefaultMutableTreeNode) parent.getUserObject();
+        }
+        ((GroupUser) parent).addUserInGroup((User) child);
     }
 
     private void addComponents() {
