@@ -13,9 +13,7 @@ public class ShowInfomationPanel extends JPanel {
 
     private JPanel treePanel;
 
-    /**
-     * Create the panel.
-     */
+
     public ShowInfomationPanel(JPanel treePanel) {
         super();
 
@@ -51,9 +49,7 @@ public class ShowInfomationPanel extends JPanel {
         initializePositivePercentageButtonActionListener();
     }
 
-    /**
-     * Returns the selected User in the TreePanel.
-     */
+
     private DefaultMutableTreeNode getSelectedNode() {
         JTree tree = ((TreePanel) treePanel).getTree();
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getSelectionPath().getLastPathComponent();
@@ -64,17 +60,6 @@ public class ShowInfomationPanel extends JPanel {
         return selectedNode;
     }
 
-    /*
-     * Action Listeners
-     */
-
-    /**
-     * Initializes action listener for UserTotalButton.  Opens message
-     * dialog box for the specified User.
-     *
-     * Displays total number of SingleUsers contained within
-     * the specified User.
-     */
     private void initializeUserTotalButtonActionListener() {
         userTotalButton.addActionListener(new ActionListener() {
 
@@ -95,14 +80,7 @@ public class ShowInfomationPanel extends JPanel {
         });
     }
 
-    /**
-     * Initializes action listener for GroupTotalButton.  Opens message
-     * dialog box for the specified User.
-     *
-     * Displays total number of GroupUsers contained within the
-     * specified User.  If a GroupUser is selected, the total excludes
-     * the selected User.
-     */
+
     private void initializeGroupTotalButtonActionListener() {
         groupTotalButton.addActionListener(new ActionListener() {
 
@@ -123,15 +101,7 @@ public class ShowInfomationPanel extends JPanel {
         });
     }
 
-    /**
-     * Initializes action listener for MessagesTotalButton.  Opens
-     * message dialog box for the specified User.
-     *
-     * Displays the total number of messages sent by the specified
-     * User.  If a GroupUser is selected, the total represents the total
-     * number of messages sent by all SingleUsers that are descendants
-     * of the specified User.
-     */
+
     private void initializeMessagesTotalButtonActionListener() {
         messagesTotalButton.addActionListener(new ActionListener() {
 
@@ -151,15 +121,7 @@ public class ShowInfomationPanel extends JPanel {
         });
     }
 
-    /**
-     * Initializes action listener for PositivePercentageButton.  Opens
-     * message dialog box for the specified User.
-     *
-     * Displays the percentage of positive messages sent by the specified
-     * User.  If a GroupUser is selected, the total represents the total
-     * number of positive messages sent by all SingleUsers that are descendants
-     * of the specified User.
-     */
+
     private void initializePositivePercentageButtonActionListener() {
         positivePercentageButton.addActionListener(new ActionListener() {
 
@@ -176,7 +138,7 @@ public class ShowInfomationPanel extends JPanel {
                 ((User) selectedNode).accept(messageCountVisitor);
                 int messageCount = messageCountVisitor.visitUser(((User) selectedNode));
 
-                // calculate percentage, set percentage to 0.00 if no messages have yet been sent
+
                 double percentage = 0;
                 if (messageCount > 0) {
                     percentage = ((double) positiveCount / messageCount) * 100;
