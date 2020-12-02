@@ -48,9 +48,6 @@ public class AddUserPanel extends JPanel {
         initializeAddGroupButtonActionListener();
     }
 
-    /*
-     * Action Listeners
-     */
 
 
     private void initializeAddUserButtonActionListener() {
@@ -58,16 +55,17 @@ public class AddUserPanel extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                // check if user ID already exists
+//                 check if user ID already exists
                 if (allUsers.containsKey(userId.getText())) {
 
                     System.out.println("Error user already exists");
+                    JOptionPane.showMessageDialog( null , "User Already Exists" );
 //
                 } else {
                     Observer child = new SingleUser(userId.getText());
 
                     allUsers.put(((User) child).getId(), child);
-                    System.out.println(allUsers.values());
+                    System.out.println("all users values : " + allUsers.values());
                     ((TreePanel) treePanel).addSingleUser((DefaultMutableTreeNode) child);
                 }
             }
@@ -82,7 +80,8 @@ public class AddUserPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 // check if user ID already exists
                 if (allUsers.containsKey(groupId.getText())) {
-                    System.out.println("Error user already exists");
+                    System.out.println("Error group already exists");
+                    JOptionPane.showMessageDialog( null , "Group Already Exists" );
 //
                 } else {
                     Observer child = new GroupUser(groupId.getText());
