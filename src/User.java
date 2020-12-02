@@ -14,6 +14,8 @@ public abstract class User extends DefaultMutableTreeNode implements Observer {
     private String id;
     private int messageCount;
     private long creationTime;
+    private long lastUpdateTime;
+
 
 
     public User(String id) {
@@ -47,5 +49,11 @@ public abstract class User extends DefaultMutableTreeNode implements Observer {
         return creationTime;
     }
 
+    public long getLastUpdateTime(){
+        return lastUpdateTime;
+    }
+    public void setLastUpdateTime(long time){
+        this.lastUpdateTime = time;
+    }
 
 }

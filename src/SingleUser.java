@@ -11,6 +11,7 @@ public class SingleUser extends User implements Subject {
     private  Map <String , Subject> followings;
     private List<Integer> uniqueID;
     private int positiveMessageCount;
+    private long lastUpdatedTime;
 
     public List<String> getTwitterMessages() {
         return twitterMessages;
@@ -39,6 +40,7 @@ public class SingleUser extends User implements Subject {
 //        this.latestMessage = message;
         this.setMessageCount(this.getMessageCount() + 1);
         twitterMessages.add( message );
+        this.setLastUpdateTime( System.currentTimeMillis() );
 
 
 

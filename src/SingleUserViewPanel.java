@@ -20,6 +20,8 @@ public class SingleUserViewPanel extends JPanel {
     private JScrollPane tweetMessageScrollPane;
     private JScrollPane currentFollowingScrollPane;
     private JScrollPane newsFeedScrollPane;
+    private  JTextArea creationTime;
+    private  JTextArea lastUpdateTime;
 
     private JButton followUserButton;
     private JButton postTweetButton;
@@ -51,12 +53,15 @@ public class SingleUserViewPanel extends JPanel {
         container.add(component, gbc);
     }
     private void addComponents() {
+
         addComponent(frame, toFollowTextField, 0, 0, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         addComponent(frame, followUserButton, 1, 0, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         addComponent(frame, currentFollowingTextArea, 0, 1, 2, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         addComponent(frame, tweetMessageScrollPane, 0, 2, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         addComponent(frame, postTweetButton, 1, 2, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         addComponent(frame, newsFeedScrollPane, 0, 3, 2, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+        addComponent( frame , creationTime , 2,0,1,1, GridBagConstraints.CENTER , GridBagConstraints.BOTH );
+        addComponent( frame, lastUpdateTime , 2,2,5,5 , GridBagConstraints.CENTER , GridBagConstraints.BOTH);
     }
 
     private void initializeComponents() {
@@ -86,6 +91,14 @@ public class SingleUserViewPanel extends JPanel {
         formatTextArea(newsFeedTextArea);
         newsFeedScrollPane = new JScrollPane(newsFeedTextArea);
         newsFeedScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        creationTime = new JTextArea( "Creation Time: " + ((User) user).getCreationTime() );
+        formatTextArea( creationTime );
+
+        lastUpdateTime = new JTextArea( "Last Update Time: " + ((User) user).getLastUpdateTime() );
+        formatTextArea( lastUpdateTime );
+
+
 
 
         updateCurrentFollowingTextArea();
@@ -119,13 +132,15 @@ public class SingleUserViewPanel extends JPanel {
 
 
     private void updateTwitterMessagesTextArea() {
-        String list = "Twitter Messages: \n";
+        String list = "Twitter News: \n";
 
         for (String news : ((SingleUser) user).getTwitterMessages()) {
-            list += " - " + news + "\n";
+            list += " - " + news + "\n"  ;
+//            list += " at " + ((SingleUser) user).getLastUpdateTime() +  "\n";
         }
 
 
+        lastUpdateTime.setText( "Last Update Time: " + ((User) user).getLastUpdateTime() );
         newsFeedTextArea.setText(list);
         newsFeedTextArea.setCaretPosition(0);
     }
@@ -148,6 +163,7 @@ public class SingleUserViewPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ((SingleUser) user).sendMessage(tweetMessageTextArea.getText());
+
 
                 for (JPanel panel : openPanels.values()) {
 
