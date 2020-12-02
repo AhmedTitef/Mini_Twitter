@@ -13,11 +13,13 @@ public abstract class User extends DefaultMutableTreeNode implements Observer {
 
     private String id;
     private int messageCount;
+    private long creationTime;
 
 
     public User(String id) {
         super(id);
 
+        this.creationTime = System.currentTimeMillis();
         this.setMessageCount( 0 );
 
         this.id = id;
@@ -39,6 +41,10 @@ public abstract class User extends DefaultMutableTreeNode implements Observer {
 
     public String getId() {
         return id;
+    }
+
+    public  long getCreationTime(){
+        return creationTime;
     }
 
 

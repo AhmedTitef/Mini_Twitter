@@ -8,6 +8,7 @@ public class GroupUser extends User {
     private List<SingleUser> singleUSerList;
     private Map<String, User> groupUsers;
     private List <Integer> ids;
+     private long creationTime;
 
 
 
@@ -48,6 +49,7 @@ public class GroupUser extends User {
 
     GroupUser(String uniqueID) {
         super(uniqueID);
+        this.creationTime = System.currentTimeMillis();
         groupUsers = new HashMap<String, User>();
     }
 
