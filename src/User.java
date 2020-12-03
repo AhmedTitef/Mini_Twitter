@@ -49,11 +49,6 @@ public abstract class User extends DefaultMutableTreeNode implements Observer {
         return creationTime;
     }
 
-    public long getLastUpdateTime(){
-        return lastUpdateTime;
-    }
-    public void setLastUpdateTime(long time){
-        this.lastUpdateTime = time;
-    }
+
 
 }

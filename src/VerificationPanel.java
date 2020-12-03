@@ -19,7 +19,6 @@ public class VerificationPanel extends JPanel {
     public VerificationPanel(JPanel treePanel, Map<String, Observer> allUsers) {
         super();
         this.treePanel = treePanel;
-        this.allGroups = allGroups;
         this.allUsers = allUsers;
 
         initializeComponents();
@@ -40,7 +39,7 @@ public class VerificationPanel extends JPanel {
     }
 
     private void initializeComponents() {
-        showVerification = new JButton( "Verify" );
+        showVerification = new JButton("Verify"  );
         intializeShowVerificationActionListener();
     }
 

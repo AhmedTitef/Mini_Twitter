@@ -72,10 +72,10 @@ public class ShowInfomationPanel extends JPanel {
                 ((User) selectedNode).accept(visitor);
                 String message = "Total number of inidividual users within "
                         + ((User) selectedNode).getId() + ": "
-                        + Integer.toString(visitor.visitUser(((User) selectedNode)));
+                        + visitor.visitUser( ((User) selectedNode) );
 
 
-                JOptionPane.showMessageDialog( null, ((User) selectedNode).getId() + " information" , message , JOptionPane.INFORMATION_MESSAGE );
+                JOptionPane.showMessageDialog( null, message,((User) selectedNode).getId() + " information"  , JOptionPane.INFORMATION_MESSAGE );
             }
         });
     }
@@ -93,10 +93,10 @@ public class ShowInfomationPanel extends JPanel {
                 ((User) selectedNode).accept(visitor);
                 String message = "Total number of groups within "
                         + ((User) selectedNode).getId() + ": "
-                        + Integer.toString(visitor.visitUser(((User) selectedNode)));
+                        + visitor.visitUser( ((User) selectedNode) );
 
 
-                JOptionPane.showMessageDialog( null, ((User) selectedNode).getId() + " information" , message , JOptionPane.INFORMATION_MESSAGE );
+                JOptionPane.showMessageDialog( null,message ,  ((User) selectedNode).getId() + " information"  , JOptionPane.INFORMATION_MESSAGE );
             }
         });
     }
@@ -116,7 +116,7 @@ public class ShowInfomationPanel extends JPanel {
                         + ((User) selectedNode).getId() + ": "
                         + Integer.toString(visitor.visitUser(((User) selectedNode)));
 
-                JOptionPane.showMessageDialog( null, ((User) selectedNode).getId() + " information" , message , JOptionPane.INFORMATION_MESSAGE );
+                JOptionPane.showMessageDialog( null,message ,  ((User) selectedNode).getId() + " information"  , JOptionPane.INFORMATION_MESSAGE );
             }
         });
     }
@@ -149,7 +149,7 @@ public class ShowInfomationPanel extends JPanel {
                         + ((User) selectedNode).getId() + ": "
                         + percentageString + "%";
 
-                JOptionPane.showMessageDialog( null, ((User) selectedNode).getId() + " information" , message , JOptionPane.INFORMATION_MESSAGE );
+                JOptionPane.showMessageDialog( null, message,((User) selectedNode).getId() + " information" , JOptionPane.INFORMATION_MESSAGE );
             }
         });
     }

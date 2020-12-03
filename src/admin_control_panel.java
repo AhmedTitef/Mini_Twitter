@@ -24,6 +24,8 @@ public class admin_control_panel {
     private JPanel addUserPanel;
     private JPanel openUserViewPanel;
     private JPanel showInfoPanel;
+    private JPanel verificationPanel;
+    private  JPanel lastUpdatePanel;
 
     private DefaultMutableTreeNode root;
     private Map<String, Observer> allUsers;
@@ -48,10 +50,13 @@ public class admin_control_panel {
     }
 
     private void addComponents() {
+
         addComponent(frame, treePanel, 0, 0, 1, 6, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         addComponent(frame, addUserPanel, 1, 0, 2, 2, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         addComponent(frame, openUserViewPanel, 1, 2, 2, 2, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         addComponent(frame, showInfoPanel, 1, 4, 2, 2, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+        addComponent( frame , verificationPanel , 1,6,1,1 , GridBagConstraints.CENTER , GridBagConstraints.BOTH );
+        addComponent( frame , lastUpdatePanel , 2 , 6 , 1, 1 , GridBagConstraints.CENTER, GridBagConstraints.BOTH );
     }
 
     public static void addComponent(Container container, Component component, int gridx, int gridy,
@@ -72,6 +77,9 @@ public class admin_control_panel {
         addUserPanel = new AddUserPanel(treePanel, allUsers);
         openUserViewPanel = new ToOpenUserViewPanel(treePanel, allUsers);
         showInfoPanel = new ShowInfomationPanel(treePanel);
+        verificationPanel = new VerificationPanel( treePanel , allUsers  );
+        lastUpdatePanel = new LastUpdatePanel(root,allUsers );
+
 
 
     }

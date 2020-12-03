@@ -95,7 +95,7 @@ public class SingleUserViewPanel extends JPanel {
         creationTime = new JTextArea( "Creation Time: " + ((User) user).getCreationTime() );
         formatTextArea( creationTime );
 
-        lastUpdateTime = new JTextArea( "Last Update Time: " + ((User) user).getLastUpdateTime() );
+        lastUpdateTime = new JTextArea( "Last Update Time: " + ((SingleUser) user).getLastUpdateTime() );
         formatTextArea( lastUpdateTime );
 
 
@@ -140,9 +140,12 @@ public class SingleUserViewPanel extends JPanel {
         }
 
 
-        lastUpdateTime.setText( "Last Update Time: " + ((User) user).getLastUpdateTime() );
+
+
         newsFeedTextArea.setText(list);
         newsFeedTextArea.setCaretPosition(0);
+
+
     }
 
 
@@ -156,18 +159,39 @@ public class SingleUserViewPanel extends JPanel {
     }
 
 
+    private void updateLastUpdateTime(){
+        long time = ((SingleUser)user).getLastUpdateTime();
+        System.out.println("time: "  + time);
+        lastUpdateTime.setText( String.valueOf( time ) );
+    }
+
+    private  void updateLatestButton(){
+//        LastUpdatePanel lastUpdatePanel = new LastUpdatePanel(  );
+    }
+
 
     private void initializePostTweetButtonActionListener() {
         postTweetButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                ((SingleUser) user).setLastUpdateTime(  System.currentTimeMillis() );
                 ((SingleUser) user).sendMessage(tweetMessageTextArea.getText());
+                System.out.println("Latest update from : " +  ((SingleUser) user).getId() ) ;
+
+//                ((SingleUser) user).setLastUpdateTime( System.currentTimeMillis() );
+//                lastUpdateTime.setText("Last Update Time: " + ((SingleUser) user).getLastUpdateTime() );
+
+
 
 
                 for (JPanel panel : openPanels.values()) {
 
+
                     ((SingleUserViewPanel) panel).updateTwitterMessagesTextArea();
+                    ((SingleUserViewPanel) panel).updateLastUpdateTime();
+//                    ((SingleUserViewPanel) panel).lastUpdateTime.setText(  "Last Update Time: " + ((SingleUser) user).getLastUpdateTime() );
+
                 }
             }
         });
@@ -180,6 +204,8 @@ public class SingleUserViewPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 User toFollow = (User) allUsers.get(toFollowTextField.getText());
+
+
 
                 if (!allUsers.containsKey(toFollowTextField.getText())) {
                     System.out.println("Fatal Error");
